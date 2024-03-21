@@ -19,7 +19,7 @@
                     <x-link-button href="{{ route('rapport.show', $rapport->id) }}">
                             @lang('Show')
                         </x-link-button>
-                        <x-link-button href="{{ route('medecin.edit', $rapport->id) }}">
+                        <x-link-button href="{{ route('rapport.edit', $rapport->id) }}">
                             @lang('edit')
                         </x-link-button>
                         <x-link-button onclick="event.preventDefault(); document.getElementById('destroy{{ $rapport->id }}').submit();">

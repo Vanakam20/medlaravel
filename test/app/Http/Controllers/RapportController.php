@@ -62,8 +62,9 @@ class RapportController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(rapport $rapport)
+    public function edit($id)
     {
+        $rapport = Rapport::findOrFail($id);
         return view('rapport.edit', compact('rapport'));
     }
 
@@ -72,7 +73,23 @@ class RapportController extends Controller
      */
     public function update(Request $request, rapport $rapport)
     {
+        $request->validate([
+            'visiteur_id' => 'required|exists:users,id',
+            'medecin_id' => 'required|exists:medecins,id',
+            'motif' => 'required|string|max:255',
+            'bilan' => 'required|string',
+
+        ]);
+        $rapport->motif = $request->input('motif');
+        $rapport->bilan = $request->input('bilan');
         
+        $rapport->visiteur_id = $request->input('visiteur_id');
+        $rapport->medecin_id = $request->input('medecin_id');
+
+        $rapport->save();
+
+    // Rediriger l'utilisateur vers la page de détails du rapport
+    return redirect()->route('rapport.index')->with('success', 'Rapport mis à jour avec succès.');
     }
 
     /**
