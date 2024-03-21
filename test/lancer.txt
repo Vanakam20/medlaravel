@@ -1,3 +1,5 @@
+php artisan migrate
+php artisan db:seed --class=MedicamentSeeder
 php artisan serve
 npm install
 npm run dev
