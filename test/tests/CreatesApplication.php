@@ -18,4 +18,11 @@ trait CreatesApplication
 
         return $app;
     }
+
+    public function testBasicTest(): void
+{
+    $data = [10, 20, 30];
+    $result = array_sum($data);
+    $this->assertEquals(60, $result);
+}
 }

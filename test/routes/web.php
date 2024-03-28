@@ -8,6 +8,8 @@ use App\Http\Controllers\MedecinController;
 use App\Http\Controllers\MedicamentsController;
 use App\Http\Controllers\RapportController;
 use App\Http\Controllers\OffrirController;
+use App\Http\Controllers\WelcomeController;
+
 
 
 /*
@@ -59,10 +61,17 @@ Route::post('/rapport', [RapportController::class, 'store'])->name('rapport.stor
 Route::get('/rapport', [RapportController::class, 'index'])->name('rapport.index');
 Route::delete('/rapport/{rapport}', [RapportController::class, 'destroy'])->name('rapport.destroy');
 Route::get('/rapport/{rapport}', [RapportController::class, 'show'])->name('rapport.show');
+Route::get('/rapport/{id}/edit', [RapportController::class, 'edit'])->name('rapport.edit');
+Route::put('/rapport/{id}', [RapportController::class, 'update'])->name('rapport.update');
 
 
 Route::get('/offrir/create/{rapport_id}', [OffrirController::class, 'create'])->name('offrir.create');
 Route::post('/offrir', [OffrirController::class, 'store'])->name('offrir.store');
 
+Route::get('/', function () {
+    return view('welcome')->with('message', 'Vous y êtes !');
+});
+
+Route::get('welcome', [ WelcomeController::class, 'index']);
 
 require __DIR__.'/auth.php';

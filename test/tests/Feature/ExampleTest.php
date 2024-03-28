@@ -16,4 +16,12 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function testBasicTest(): void
+    {
+        $response = $this->get('/');
+        $response->assertViewHas('message', 'Vous y êtes !');
+    }
+
+    
 }
