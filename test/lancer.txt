@@ -3,3 +3,5 @@ php artisan db:seed --class=MedicamentSeeder
 php artisan serve
 npm install
 npm run dev
+
+composer update --no-scripts  
