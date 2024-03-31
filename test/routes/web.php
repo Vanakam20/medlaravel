@@ -47,6 +47,7 @@ Route::post('/medecin/store', [MedecinController::class, 'store'])->name('medeci
 Route::get('/medecin/create', [MedecinController::class, 'create'])->name('medecin.create');
 Route::get('/medecin/store', [MedecinController::class, 'store'])->name('medecin.store');
 Route::get('/medecin', [MedecinController::class, 'index'])->name('medecin.index');
+Route::get('/medecin/search', [MedecinController::class, 'search'])->name('medecin.search');
 Route::get('/medecin/{medecin}', [MedecinController::class, 'show'])->name('medecin.show');
 Route::get('/medecin/{medecin}/edit', [MedecinController::class, 'edit'])->name('medecin.edit');
 Route::put('/medecin/{medecin}', [MedecinController::class, 'update'])->name('medecin.update');

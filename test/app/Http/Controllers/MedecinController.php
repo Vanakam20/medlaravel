@@ -16,6 +16,16 @@ class MedecinController extends Controller
         return view('medecin.index', compact('medecin'));
     }
 
+    public function search(Request $request)
+    {
+        $nom = $request->input('nom');
+
+        // Recherche des médecins dont le nom correspond à la valeur saisie
+        $medecin = Medecin::where('nom', 'like', '%' . $nom . '%')->get();
+
+        return view('medecin.index', compact('medecin'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
