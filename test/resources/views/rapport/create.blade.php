@@ -1,5 +1,6 @@
 <!-- resources/views/rapport/create.blade.php -->
 <x-app-layout>
+<div class="container flex justify-center mx-auto">
 <title>Créer un rapport</title>
 <x-slot name="header">
     <h1>Créer un rapport</h1>
@@ -34,5 +35,6 @@
         
         <button type="submit">Créer</button>
     </form>
+    </div>
 </x-tasks-card>
 </x-app-layout>

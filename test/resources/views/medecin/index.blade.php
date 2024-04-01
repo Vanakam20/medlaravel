@@ -4,19 +4,20 @@
     <x-slot name="header">
         <h1>Liste des médecins</h1>
 </x-slot>
-<div class="container flex justify-center mx-auto">
+
+        <x-tasks-card>
+        @if ($medecin->isEmpty())
+            <p>Aucun médecin trouvé.</p>
+        @else
+            <ul>
+            <div class="container flex justify-center mx-auto">
         <form action="{{ route('medecin.search') }}" method="GET">
             <div class="flex items-center">
                 <input type="text" name="nom" placeholder="Nom du médecin" value="{{ request()->input('nom') }}">
                 <button type="submit">Rechercher</button>
             </div>
         </form>
-    
-        <x-tasks-card>
-        @if ($medecin->isEmpty())
-            <p>Aucun médecin trouvé.</p>
-        @else
-            <ul>
+        </div>
                 @foreach ($medecin as $medecin)
                     <li>Nom : {{ $medecin->nom }} {{ $medecin->prenom }} Spécialité : {{ $medecin->speComplementaire }}</li>
                     <x-link-button href="{{ route('medecin.show', $medecin->id) }}">
@@ -34,7 +35,7 @@
                             </form>
                     @endforeach
             </ul>
-            </div>
+
         @endif
         
 </x-tasks-card>

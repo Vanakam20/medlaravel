@@ -5,6 +5,15 @@
         <h1>Liste des Rapports</h1>
 </x-slot>
         <x-tasks-card>
+        <div class="container flex justify-center mx-auto">
+        <form action="{{ route('rapport.search') }}" method="GET">
+            <div class="flex items-center">
+                <label for="date_creation">Date de création :</label>
+                <input type="date" name="date_creation" id="date_creation">
+                <button type="submit">Rechercher</button>
+            </div>
+        </form>
+    </div>
         @if ($rapport->isEmpty())
             <p>Aucun rapport trouvé.</p>
         @else
@@ -15,6 +24,7 @@
                      <p>Nom du médecin: {{ $rapport->medecin->nom }}</p>
                     <p>Motif: {{ $rapport->motif }}</p>
                     <p>Bilan: {{ $rapport->bilan }}</p>
+                    <p>Crée le : {{ $rapport->created_at }}</p>
                     <hr>
                     <x-link-button href="{{ route('rapport.show', $rapport->id) }}">
                             @lang('Show')

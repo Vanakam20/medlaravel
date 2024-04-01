@@ -64,6 +64,7 @@ Route::delete('/rapport/{rapport}', [RapportController::class, 'destroy'])->name
 Route::get('/rapport/{rapport}', [RapportController::class, 'show'])->name('rapport.show');
 Route::get('/rapport/{id}/edit', [RapportController::class, 'edit'])->name('rapport.edit');
 Route::put('/rapport/{id}', [RapportController::class, 'update'])->name('rapport.update');
+Route::get('/rapport/search', [RapportController::class, 'search'])->name('rapport.search');
 
 
 Route::get('/offrir/create/{rapport_id}', [OffrirController::class, 'create'])->name('offrir.create');

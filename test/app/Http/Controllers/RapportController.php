@@ -19,6 +19,16 @@ class RapportController extends Controller
         return view('rapport.index', compact('rapport'));
     }
 
+    public function search(Request $request)
+    {
+        $dateCreation = $request->input('date_creation');
+
+        // Recherche des rapports créés à la date spécifiée
+        $rapport = Rapport::where('created_at', 'like', $dateCreation."%");
+
+        return view('rapport.index', compact('rapport'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
